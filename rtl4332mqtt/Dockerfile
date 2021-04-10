@@ -37,10 +37,20 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     make install && \
     apk del build-deps && \
     rm -r /tmp/src && \
-    apk add --no-cache libusb mosquitto-clients jq golang
-    #export GOPATH=$HOME/go && \
-    #export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin && \
-    #go get github.com/bemasher/rtlamr
+    apk add --no-cache libusb mosquitto-clients jq
+    
+    
+RUN echo "installing go version 1.16.3..." 
+RUN apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go && \
+    wget -O go.tgz https://golang.org/dl/go1.16.3.src.tar.gz  && \
+    tar -C /usr/local -xzf go.tgz  && \
+    cd /usr/local/go/src/  && \
+    ./make.bash  && \
+    export GOPATH=$HOME/go && \
+    export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin && \
+    apk del .build-deps  && \
+    go version  && \
+    go get github.com/bemasher/rtlamr
 
 #
 # Define an environment variable
