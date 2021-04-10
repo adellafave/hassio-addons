@@ -1,9 +1,9 @@
 {
-  "name": "RTL_433 to MQTT Bridge",
+  "name": "RTLAMR to MQTT Bridge",
   "version": "0.2.1",
-  "slug": "rtl4332mqtt",
-  "description": "433MHz RF to MQTT Bridge based on RTL_SDR/RTL_433 for RTL2832U based DVB-T USB tuners",
-  "url": "https://github.com/franfos/hassio-addons/tree/master/rtl4332mqtt",
+  "slug": "rtlamr2mqtt",
+  "description": "AMR RF to MQTT Bridge based on RTL_SDR/RTL_TCP/RTLAMR for RTL2832U based DVB-T USB tuners",
+  "url": "https://github.com/adellafave/hassio-addons/tree/adellafave-rtlamrdev/rtl4332mqtt",
   "startup": "services",
   "map": ["config:rw", "ssl"],
   "usb": true,
@@ -16,10 +16,10 @@
   ],
   "options":
   {
-    "mqtt_host": "hassio.local",
-    "mqtt_user": "",
+    "mqtt_host": "core-mosquitto",
+    "mqtt_user": "homeassistant",
     "mqtt_password": "",
-    "mqtt_topic": "homeassistant/sensor/currentcost",
+    "mqtt_topic": "AMR_Meters/",
     "protocol": 100,
     "frequency": 319500000,
     "gain": 60,
