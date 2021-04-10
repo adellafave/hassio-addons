@@ -40,9 +40,9 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     apk add --no-cache libusb mosquitto-clients jq
     
     
-RUN echo "installing go version 1.16.3..." 
+RUN echo "installing go version 1.11.6..." 
 RUN apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go && \
-    wget -O go.tgz https://golang.org/dl/go1.16.3.src.tar.gz  && \
+    wget -O go.tgz https://golang.org/dl/go1.11.6.src.tar.gz  && \
     tar -C /usr/local -xzf go.tgz  && \
     cd /usr/local/go/src/  && \
     ./make.bash  && \
