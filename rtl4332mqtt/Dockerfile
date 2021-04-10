@@ -37,7 +37,10 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     make install && \
     apk del build-deps && \
     rm -r /tmp/src && \
-    apk add --no-cache libusb mosquitto-clients jq
+    apk add --no-cache libusb mosquitto-clients jq golang && \
+    export GOPATH=$HOME/go && \
+    export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin && \
+    go get github.com/bemasher/rtlamr
 
 #
 # Define an environment variable
