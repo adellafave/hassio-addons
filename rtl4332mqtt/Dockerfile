@@ -49,7 +49,10 @@ RUN apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go && \
     export GOPATH=$HOME/go && \
     export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin && \
     apk del .build-deps  && \
-    go version  && \
+    go version
+    
+FROM golang:alpine 
+RUN apk add git && \
     go get github.com/bemasher/rtlamr
 
 #
